@@ -84,7 +84,7 @@ This confused us for a while, but we eventually realized we had overlooked a lin
 However, because git doesn't store diffs, but rather snapshots, every commit object contains every file at that point in history, so we just had to try a different commit that the `.env` might've been present in. We choose the previous commit `00ee5738e88` following the same route. Following the hashes from commit -> tree -> blob we eventually get to the `.env` file. We can then move the compressed object into a mock git repos `.git/objects` directory with using the same hash addressable object structure as we request them, and use the `git cat-file` command to pretty print the file and get the Private Key:
 ```bash
 $ git cat-file -p e7c5357139cf4fdc7b4af389e5493bf053742dec
-PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nMIIBPAIBAAJBALh52gPnTQt6LtV3zZD5z+zEfhhCLNZjZAQcLLGBCmJS0O1BW6O0\ntK3uDZLIYd4TInyIp8tw8yDsV+V78BPFcwECAwEAAQJAPHfkmKb2wC5ar6pHfaAF\nIcz+sCDw5Y1KuXYqyDxNw704vZnL4b7de1wH1N/1zGDI1EXWjGPeit6OT7l8agO1\nqQIjAPgbnG6LDVezr4afwtpS7C0yWOkV9f+ZPCAfJOhMlobQdO8CHwC+WBMCGhO4\nXMaeX+D95ebh8QBFsn1eSTLotFcE9w8CIm5miuM9iMBfulkjOedAQsuRvbJqDT6h\nBvocIaYkfk6a740CHwCBlmDKi4pld/RZGpmJAh5gML2otc4YhOk9+JlN7g0CIgog\nX5NfWtQ5U5GCYiEowDK7cGMy0WM5msZvWW0/3ehJyUc=\n-----END RSA PRIVATE KEY-----\n"
+PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nMIIBPAIBAAJBA...ehJyUc=\n-----END RSA PRIVATE KEY-----\n"
 ```
 
 We can then use this private key with the `decrypt.py`, the encrypted `flag.txt`, and the provided key file to decrypt the flag.
