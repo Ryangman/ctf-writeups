@@ -1,7 +1,8 @@
 # CTF League - kpa-world
 
 ## Known Plaintext Attacks
-
+A known Plaintext Attack is a form a cryptographic security where you assume the threat model of not only can an attacker potentially see ciphertexts (e.g. over the network) They also know the mapping of one or more plaintexts to the ciphertext. 
+  
 ## Flag 1
 For the first challenge, the cipher was a simple XOR One Time Pad. We were provided 1 plaintext <-> ciphertext mapping, and a second challenge ciphertext. The security of OTP encryption relies entirely on not reusing a key, because `message xor ciphertext == key`. We can use that to get the key, and then decrypt the second plaintext for the flag:
 
